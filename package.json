@@ -1,0 +1,22 @@
+{
+  "name": "lib_getlinksfrommd",
+  "version": "1.0.0",
+  "description": "A lib to link",
+  "main": "getLinksFromMd.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "getLinks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Sabrina-88/lib_getLinksFromMd.git"
+  },
+  "author": "Sabrina Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sabrina-88/lib_getLinksFromMd/issues"
+  },
+  "homepage": "https://github.com/Sabrina-88/lib_getLinksFromMd#readme"
+}
