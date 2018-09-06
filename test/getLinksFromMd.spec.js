@@ -1,46 +1,49 @@
-var mocha = require("mocha");
-var chai = require("chai");
-var url = require("./getLinksFromMd");
+var chai = require('chai');
+var text = require('../index');
 var expect = chai.expect;
 
-describe("url", function() {
-  describe("#findURLsInText", function() {
-    describe("when there is no url in the text", function() {
-      it("should return an empty array", function() {
-
+describe('str', function () {
+  describe('#getLinksFromMd', function () {
+	  describe('Quando o texto for uma string e não houver url', function () {
+      it('Deverá retornar um array vazio', function () {
+        expect(text.getLinksFromMd('Esse texto nao possui url')).to.be.an('array');
       });
     })
 
-    describe("when there is one url in the text", function() {
-      describe("and it has HTTPS", function() {
-        it("should return the url in an array", function() {
-
+    describe('Quando não houver parâmetro', function () {
+      it('Deverá lançar o seguinte erro:', function () {
+        var text_result = function () {
+          text.getLinksFromMd('')
+        };
+        expect(text_result).to.throw('Digite somente texto');
         });
-      });
+	})
 
-      describe("and it has HTTP", function() {
-        it("should return the url in an array", function() {
-
-        });
-      });
-
-      describe("and it has www", function() {
-        it("should return the url in an array", function() {
-
-        });
-      });
-
-      describe("and it only the domain", function() {
-        it("should return the url in an array", function() {
-
-        });
+    describe('Quando o texto for um numero ', function () {
+      it('Deverá lançar o seguinte erro:', function () {
+        var text_result = function () {
+          text.getLinksFromMd(12345)
+        };
+        expect(text_result).to.throw('Digite somente texto');
       });
     })
 
-    describe("when there are three urls in the text", function() {
-      it("should return the urls in an array", function() {
-
+    
+    describe('Quando o texto for uma string ', function () {
+      describe('e houver uma url', function () {
+        it('Deverá retornar um array com o objeto com a url e o link do markdown.', function () {
+          expect(text.getLinksFromMd('Olá testando [google](www.google.com)')).to.deep.equal([ { href: 'www.google.com', text: 'google' } ]);
+          expect(text.getLinksFromMd('Lorem ipsum [google](www.google.com) dolor sit amet')).to.deep.equal([ { href: 'www.google.com', text: 'google' } ]);
+		  expect(text.getLinksFromMd('[google](www.google.com) Lorem ipsum dolor sit amet')).to.deep.equal([ { href: 'www.google.com', text: 'google' } ]);
+        });
       });
+
+    describe('Se houver tres urls diferentes', function () {
+      it('Deverá retornar o objeto dentro do array.', function () {
+        expect(text.getLinksFromMd('Lorem ipsum dolor sit amet, consectetur adipisicing elit [globo](www.globo.com), sed do eiusmod tempor incididunt [gmail] ut labore (www.gmail.com) et [laboratoria](www.laboratoria.la)  dolore magna aliqua.')).to.deep.equal([{href: 'www.globo.com', text: 'globo'}, {href: 'www.gmail.com', text: 'gmail'}, {href: 'www.laboratoria.la', text: 'laboratoria'} ]);
+      });
+    });
+			
     })
   });
 });

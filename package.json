@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Sabrina-88/lib_getLinksFromMd/issues"
   },
-  "homepage": "https://github.com/Sabrina-88/lib_getLinksFromMd#readme"
+  "homepage": "https://github.com/Sabrina-88/lib_getLinksFromMd#readme",
+  "dependencies": {
+    "chai": "^4.1.2"
+  }
 }
