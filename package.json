@@ -21,5 +21,8 @@
   "homepage": "https://github.com/Sabrina-88/lib_getLinksFromMd#readme",
   "dependencies": {
     "chai": "^4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0"
   }
 }

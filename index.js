@@ -1,11 +1,3 @@
-/*module.exports.getLinksFromMd = function getLinksFromMd(text) {
-  var regex_url = new RegExp(/(https?:\/\/)?(www\.)?[a-z0-9]+(\.\w{2,}){1,2}/g);
-  var urls = text.match(regex_url);
-
-  return urls ? urls : [{}];
-};
-*/
-
 function getLinksFromMd(str) {
 	if (typeof str !== 'string' || str == ''|| str == 'number'){
 		throw new Error ('Digite somente texto'); 
